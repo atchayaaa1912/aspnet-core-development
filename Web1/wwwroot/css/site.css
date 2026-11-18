@@ -1,0 +1,252 @@
+
+/* ==============================
+   GENERAL STYLING
+============================== */
+
+html {
+    font-size: 16px;
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f4f7fb;
+    color: #334155;
+}
+
+
+/* ==============================
+   NAVIGATION BAR
+============================== */
+
+.navbar {
+    background: linear-gradient(120deg, #0f172a, #1e3a8a) !important;
+    padding: 16px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+    margin-bottom: 0 !important;
+}
+
+.navbar-brand {
+    font-size: 25px;
+    font-weight: 700;
+    color: white !important;
+    letter-spacing: 1px;
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-link {
+    color: #dbeafe !important;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 18px;
+    padding: 9px 15px !important;
+    border-radius: 7px;
+    transition: all 0.3s ease;
+}
+
+    .nav-link:hover {
+        color: white !important;
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+
+
+/* ==============================
+   MAIN CONTENT
+============================== */
+
+main {
+    flex: 1;
+    padding-top: 65px;
+    padding-bottom: 65px;
+}
+
+
+/* ==============================
+   CONTENT CARD
+============================== */
+
+.content-card {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+    transition: 0.3s ease;
+}
+
+    .content-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.10);
+    }
+
+
+/* ==============================
+   HEADINGS
+============================== */
+
+.page-heading {
+    font-size: 42px;
+    font-weight: 700;
+    color: #172554;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.lead {
+    font-size: 19px;
+    color: #475569;
+    line-height: 1.7;
+}
+
+p {
+    line-height: 1.8;
+}
+
+
+/* ==============================
+   BUTTONS
+============================== */
+
+.btn-primary {
+    background-color: #1d4ed8;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background-color: #172554;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(29, 78, 216, 0.25);
+    }
+
+
+/* ==============================
+   FOOTER
+============================== */
+
+.footer {
+    position: relative;
+    bottom: auto;
+    width: 100%;
+    background-color: #0f172a;
+    color: #cbd5e1 !important;
+    padding: 22px 0;
+    border-top: none !important;
+    line-height: normal;
+}
+
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 12px 15px;
+    }
+
+    .navbar-nav {
+        margin-left: 0;
+    }
+
+    .nav-link {
+        margin-left: 0;
+    }
+
+    main {
+        padding: 35px 15px;
+    }
+
+    .content-card {
+        padding: 30px 20px;
+    }
+
+    .page-heading {
+        font-size: 32px;
+    }
+
+    .lead {
+        font-size: 17px;
+    }
+}
+
+
+/* ==============================
+   CONTACT PAGE
+============================== */
+
+/* Contact Us Page */
+
+.contact-container {
+    background: #f5f7fa;
+    padding: 60px 20px;
+    min-height: 600px;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+    .contact-header h1 {
+        color: #172d4d;
+        font-size: 36px;
+        font-weight: 700;
+    }
+
+    .contact-header p {
+        color: #687386;
+        font-size: 16px;
+    }
+
+.contact-card {
+    max-width: 600px;
+    margin: auto;
+    padding: 35px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
+
+    .contact-card .form-label {
+        color: #172d4d;
+        font-weight: 600;
+    }
+
+    .contact-card .form-control {
+        padding: 12px;
+        border: 1px solid #d5dbe3;
+        border-radius: 5px;
+        font-size: 15px;
+    }
+
+        .contact-card .form-control:focus {
+            border-color: #b18a45;
+            box-shadow: 0 0 5px rgba(177,138,69,0.25);
+        }
+
+    .contact-card .btn-primary {
+        background: #172d4d;
+        border: none;
+        padding: 13px;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+        .contact-card .btn-primary:hover {
+            background: #b18a45;
+        }

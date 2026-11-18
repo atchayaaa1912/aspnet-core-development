@@ -1,0 +1,45 @@
+﻿@model List<Web1.Models.ContactMessage>
+
+@{
+    ViewData["Title"] = "Contact Messages";
+}
+
+<h2>Contact Messages</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Message</th>
+            <th>Submitted At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var message in Model)
+        {
+            
+            <tr>
+                <td>@message.Id</td>
+                <td>@message.FullName</td>
+                <td>@message.Email</td>
+                <td>@message.Subject</td>
+                <td>@message.Message</td>
+                <td>@message.SubmittedAt</td>
+
+                <td>
+                    <a asp-controller="Home"
+                       asp-action="Details"
+                       asp-route-id="@message.Id"
+                       class="btn btn-primary btn-sm">
+                        View
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

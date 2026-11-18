@@ -1,0 +1,20 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build files
+bin/
+obj/
+
+# Temporary files
+[Tt]emp/
+[Tt]mp/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.*
+!.env.example

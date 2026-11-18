@@ -1,0 +1,31 @@
+﻿@model Web1.Models.ContactMessage
+
+@{
+    ViewData["Title"] = "Message Details";
+}
+
+<div class="container mt-4">
+    <h2>Message Details</h2>
+
+    <div class="card p-4 mt-3">
+
+        <p><strong>ID:</strong> @Model.Id</p>
+
+        <p><strong>Full Name:</strong> @Model.FullName</p>
+
+        <p><strong>Email:</strong> @Model.Email</p>
+
+        <p><strong>Subject:</strong> @Model.Subject</p>
+
+        <p><strong>Message:</strong> @Model.Message</p>
+
+        <p><strong>Submitted At:</strong> @Model.SubmittedAt</p>
+
+        <a asp-controller="Home"
+           asp-action="Messages"
+           class="btn btn-secondary mt-3">
+            Back to Messages
+        </a>
+
+    </div>
+</div>
