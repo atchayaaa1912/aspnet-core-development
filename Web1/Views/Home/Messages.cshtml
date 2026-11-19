@@ -22,7 +22,6 @@
     <tbody>
         @foreach (var message in Model)
         {
-            
             <tr>
                 <td>@message.Id</td>
                 <td>@message.FullName</td>
@@ -32,12 +31,28 @@
                 <td>@message.SubmittedAt</td>
 
                 <td>
-                    <a asp-controller="Home"
-                       asp-action="Details"
-                       asp-route-id="@message.Id"
-                       class="btn btn-primary btn-sm">
-                        View
-                    </a>
+                    <div class="action-buttons">
+                        <a asp-controller="Home"
+                           asp-action="Details"
+                           asp-route-id="@message.Id"
+                           class="action-btn view-btn">
+                            <i class="bi bi-eye"></i> View
+                        </a>
+
+                        <a asp-controller="Home"
+                           asp-action="Edit"
+                           asp-route-id="@message.Id"
+                           class="action-btn edit-btn">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </a>
+
+                        <a asp-controller="Home"
+                           asp-action="Delete"
+                           asp-route-id="@message.Id"
+                           class="action-btn delete-btn">
+                            <i class="bi bi-trash"></i> Delete
+                        </a>
+                    </div>
                 </td>
             </tr>
         }
