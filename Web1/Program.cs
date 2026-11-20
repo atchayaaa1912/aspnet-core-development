@@ -7,8 +7,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection")
     )
 );
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<Web1.Services.DocumentService>();
 
 var app = builder.Build();
 

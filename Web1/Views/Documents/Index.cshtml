@@ -1,0 +1,145 @@
+﻿@model List<Web1.Models.Document>
+
+@{
+    ViewData["Title"] = "Document Management";
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">Document Management</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <!-- File Upload Section -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-header">
+            <h5 class="mb-0">Upload a Document</h5>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-controller="Documents"
+                  asp-action="Upload"
+                  method="post"
+                  enctype="multipart/form-data">
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Select a file
+                    </label>
+
+                    <input type="file"
+                           name="file"
+                           class="form-control"
+                           accept=".pdf,.jpg,.jpeg"
+                           required />
+
+                    <small class="text-muted">
+                        Allowed formats: PDF, JPG, JPEG.
+                        Maximum size: 5 MB.
+                    </small>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-cloud-upload"></i>
+                    Upload File
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Uploaded Documents Section -->
+    <div class="card shadow-sm">
+
+        <div class="card-header">
+            <h5 class="mb-0">Uploaded Documents</h5>
+        </div>
+
+        <div class="card-body">
+
+            @if (Model != null && Model.Any())
+            {
+                <div class="table-responsive">
+
+                    <table class="table table-bordered table-hover">
+
+                        <thead class="table-light">
+                            <tr>
+                                <th>File Name</th>
+                                <th>File Type</th>
+                                <th>File Size</th>
+                                <th>Uploaded At</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var document in Model)
+                            {
+                                <tr>
+                                    <td>@document.OriginalFileName</td>
+
+                                    <td>@document.ContentType</td>
+
+                                    <td>
+                                        @((document.FileSize / 1024.0).ToString("F2")) KB
+                                    </td>
+
+                                    <td>
+                                        @document.UploadedAt.ToLocalTime().ToString("dd-MM-yyyy hh:mm tt")
+                                    </td>
+
+                                    <td>
+                                        <a asp-controller="Documents"
+                                           asp-action="Download"
+                                           asp-route-id="@document.Id"
+                                           class="document-action download-icon"
+                                           title="Download document"
+                                           aria-label="Download @document.OriginalFileName">
+
+                                            <i class="bi bi-download"></i>
+                                        </a>
+
+                                        <a asp-controller="Documents"
+                                            asp-action="Delete"
+                                            asp-route-id="@document.Id"
+                                            class="document-action delete-icon"
+                                            title="Delete document"
+                                            aria-label="Delete @document.OriginalFileName">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </td>
+                                        
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+
+                </div>
+            }
+            else
+            {
+                <p class="text-muted text-center mb-0">
+                    No documents uploaded yet.
+                </p>
+            }
+
+        </div>
+    </div>
+
+</div>

@@ -13,5 +13,14 @@ namespace Web1.Data
         }
 
         public DbSet<ContactMessage> ContactMessages { get; set; }
+        public DbSet<Document> Documents { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Document>()
+                .HasIndex(d => d.ContentHash)
+                .IsUnique();
+        }
     }
 }

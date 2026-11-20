@@ -18,3 +18,7 @@ obj/
 .env
 .env.*
 !.env.example
+
+
+#user uploaded files
+Web1/UploadedFiles/

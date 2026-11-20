@@ -334,3 +334,44 @@ p {
         transform: translateY(-2px);
         box-shadow: 0 4px 10px rgba(220, 53, 69, 0.2);
     }
+
+
+
+/* ==============================
+   DOCUMENT ACTIONS
+============================== */
+.document-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.download-icon {
+    color: #2563eb;
+    background-color: #eff6ff;
+}
+
+    .download-icon:hover {
+        color: white;
+        background-color: #2563eb;
+    }
+
+    .download-icon i {
+        font-size: 18px;
+    }
+
+
+.delete-icon {
+    color: #dc2626;
+    background-color: #fef2f2;
+}
+
+    .delete-icon:hover {
+        color: white;
+        background-color: #dc2626;
+    }
