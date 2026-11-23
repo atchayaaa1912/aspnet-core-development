@@ -4,7 +4,7 @@
     ViewData["Title"] = "Document Management";
 }
 
-<div class="container mt-4">
+<div class="container document-container">
 
     <h2 class="mb-4">Document Management</h2>
 
@@ -35,10 +35,7 @@
                   method="post"
                   enctype="multipart/form-data">
 
-                <div class="mb-3">
-                    <label class="form-label">
-                        Select a file
-                    </label>
+                <div class="d-flex align-items-center gap-2">
 
                     <input type="file"
                            name="file"
@@ -46,19 +43,19 @@
                            accept=".pdf,.jpg,.jpeg"
                            required />
 
-                    <small class="text-muted">
-                        Allowed formats: PDF, JPG, JPEG.
-                        Maximum size: 5 MB.
-                    </small>
+                    <button type="submit"
+                            class="btn btn-primary upload-btn">
+                        <i class="bi bi-cloud-upload"></i>
+                        Upload File
+                    </button>
+
                 </div>
 
-                <button type="submit" class="btn btn-primary">
-                    <i class="bi bi-cloud-upload"></i>
-                    Upload File
-                </button>
+                <small class="text-muted">
+                    Allowed formats: PDF, JPG, JPEG. Maximum size: 5 MB.
+                </small>
 
             </form>
-
         </div>
     </div>
 

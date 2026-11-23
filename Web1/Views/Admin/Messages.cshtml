@@ -1,0 +1,70 @@
+﻿@model List<Web1.Models.ContactMessage>
+
+@{
+    ViewData["Title"] = "Contact Messages";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Contact Messages</h2>
+
+    <a asp-controller="Admin"
+       asp-action="ExportToExcel"
+       class="btn btn-success">
+        <i class="bi bi-file-earmark-excel"></i>
+        Export to Excel
+    </a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Message</th>
+            <th>Submitted At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var message in Model)
+        {
+            <tr>
+                <td>@message.Id</td>
+                <td>@message.FullName</td>
+                <td>@message.Email</td>
+                <td>@message.Subject</td>
+                <td>@message.Message</td>
+                <td>@message.SubmittedAt</td>
+
+                <td>
+                    <a asp-action="Details"
+                       asp-route-id="@message.Id"
+                       class="contact-action view-icon"
+                       title="View"
+                       aria-label="View contact message">
+                        <i class="bi bi-eye"></i>
+                    </a>
+
+                    <a asp-action="Edit"
+                       asp-route-id="@message.Id"
+                       class="contact-action edit-icon"
+                       title="Edit"
+                       aria-label="Edit contact message">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@message.Id"
+                       class="contact-action delete-icon"
+                       title="Delete"
+                       aria-label="Delete contact message">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

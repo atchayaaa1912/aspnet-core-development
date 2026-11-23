@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using Web1.Models;
 
@@ -14,6 +15,8 @@ namespace Web1.Data
 
         public DbSet<ContactMessage> ContactMessages { get; set; }
         public DbSet<Document> Documents { get; set; }
+
+        public DbSet<User> Users { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
