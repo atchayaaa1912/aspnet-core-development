@@ -1,95 +1,185 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Web1</title>
-    <script type="importmap"></script>
+
+    <title>@ViewData["Title"] - ConnectDesk</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Web1.styles.css" asp-append-version="true" />
+
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Web1</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
 
-                    <ul class="navbar-nav flex-grow-1">
+    @if (User.Identity != null && User.Identity.IsAuthenticated)
+    {
+        <!-- Employee Layout -->
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark"
-                               asp-controller="Home"
-                               asp-action="Index">Home</a>
-                        </li>
+        <div class="employee-layout">
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark"
-                               asp-controller="Home"
-                               asp-action="About">About</a>
-                        </li>
+            <aside class="sidebar">
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark"
-                               asp-controller="Home"
-                               asp-action="Contact">Contact Us</a>
-                        </li>
+                <div class="sidebar-brand">
+                    <i class="bi bi-briefcase-fill"></i>
+                    <span>ConnectDesk</span>
+                </div>
 
-                        @if (User.Identity != null && User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                <form asp-controller="Account"
-                                      asp-action="Logout"
-                                      method="post"
-                                      class="d-inline">
+                <div class="sidebar-section">
+                    MAIN MENU
+                </div>
 
-                                    <button type="submit" class="nav-link btn btn-link">
-                                        Logout
-                                    </button>
+                <nav class="sidebar-nav">
 
-                                </form>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Account" asp-action="Register">
-                                    Register
-                                </a>
-                            </li>
+                    <a asp-controller="Dashboard"
+                       asp-action="Index"
+                       class="sidebar-link">
+                        <i class="bi bi-grid"></i>
+                        <span>Dashboard</span>
+                    </a>
 
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Account" asp-action="Login">
-                                    Login
-                                </a>
-                            </li>
-                        }
+                    <a asp-controller="Admin"
+                       asp-action="Messages"
+                       class="sidebar-link">
+                        <i class="bi bi-chat-left-text"></i>
+                        <span>Enquiries</span>
+                    </a>
 
-                    </ul>
+                    <a asp-controller="Documents"
+                       asp-action="Index"
+                       class="sidebar-link">
+                        <i class="bi bi-folder2-open"></i>
+                        <span>Documents</span>
+                    </a>
+
+
+
+                </nav>
+
+                <div class="sidebar-bottom">
+
+                    <div class="employee-info">
+                        <i class="bi bi-person-circle"></i>
+
+                        <div>
+                            <strong>@User.Identity.Name</strong>
+                            <small>Employee</small>
+                        </div>
+                    </div>
+
+                    <form asp-controller="Account"
+                          asp-action="Logout"
+                          method="post">
+
+                        @Html.AntiForgeryToken()
+
+                        <button type="submit" class="sidebar-link logout-link">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Logout</span>
+                        </button>
+
+                    </form>
 
                 </div>
-            </div>
-        </nav>
-    </header>
-    
 
-    <div class="container page-content">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+            </aside>
 
-    
+            <main class="employee-main">
+                <div class="employee-content">
+                    @RenderBody()
+                </div>
+            </main>
+
+        </div>
+    }
+    else
+    {
+        <!-- Public Website Layout -->
+
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom shadow-sm">
+
+                <div class="container-fluid">
+
+                    <a class="navbar-brand"
+                       asp-controller="Home"
+                       asp-action="Index">
+                        ConnectDesk
+                    </a>
+
+                    <button class="navbar-toggler"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target=".navbar-collapse">
+
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
+                        <ul class="navbar-nav">
+
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   asp-controller="Home"
+                                   asp-action="Index">
+                                    Home
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   asp-controller="Home"
+                                   asp-action="About">
+                                    About
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   asp-controller="Home"
+                                   asp-action="Contact">
+                                    Contact Us
+                                </a>
+                            </li>
+
+                        </ul>
+
+                        <ul class="navbar-nav">
+
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   asp-controller="Account"
+                                   asp-action="Login">
+                                    Employee Login
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+            </nav>
+        </header>
+
+        <div class="container page-content">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    }
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

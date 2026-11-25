@@ -41,11 +41,32 @@ namespace Web1.Controllers
                 return View(model);
             }
 
-            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+            // Check whether username already exists
+            var existingUserName = await _context.Users
+                .AnyAsync(u => u.UserName == model.UserName);
 
-            if (existingUser != null)
+            if (existingUserName)
             {
-                ModelState.AddModelError("Email", "Email already registered.");
+                ModelState.AddModelError(
+                    "UserName",
+                    "Username already taken."
+                );
+            }
+
+            // Check whether email already exists
+            var existingEmail = await _context.Users
+                .AnyAsync(u => u.Email == model.Email);
+
+            if (existingEmail)
+            {
+                ModelState.AddModelError(
+                    "Email",
+                    "Email already registered."
+                );
+            }
+
+            if (!ModelState.IsValid)
+            {
                 return View(model);
             }
 
@@ -55,17 +76,34 @@ namespace Web1.Controllers
                 Email = model.Email
             };
 
-            user.PasswordHash = _passwordHasher.HashPassword(user,model.Password);
+            user.PasswordHash = _passwordHasher.HashPassword(
+                user,
+                model.Password
+            );
 
             _context.Users.Add(user);
 
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                ModelState.AddModelError(
+                    "",
+                    "Username or email is already registered. Please try different details."
+                );
 
-            TempData["SuccessMessage"] = "Registration successful! Please log in.";
+                return View(model);
+            }
+
+            TempData["SuccessMessage"] =
+                "Registration successful! Please log in.";
 
             return RedirectToAction("Login");
         }
 
+        //----------------------------------------------------------------------------------------------------------
 
         [HttpGet]
         public IActionResult Login()
@@ -73,7 +111,7 @@ namespace Web1.Controllers
             return View();
         }
 
-
+        //----------------------------------------------------------------------------------------------------------
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -124,8 +162,10 @@ namespace Web1.Controllers
                 principal
             );
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Dashboard");
         }
+
+        //----------------------------------------------------------------------------------------------------------
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -136,6 +176,14 @@ namespace Web1.Controllers
             );
 
             return RedirectToAction("Index", "Home");
+        }
+
+        //----------------------------------------------------------------------------------------------------------
+
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

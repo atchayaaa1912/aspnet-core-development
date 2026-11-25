@@ -4,9 +4,19 @@
     ViewData["Title"] = "Document Management";
 }
 
-<div class="container document-container">
+<div class="document-page">
 
-    <h2 class="mb-4">Document Management</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2>Document Management</h2>
+            <p class="text-muted mb-0">Upload and manage your documents.</p>
+        </div>
+
+        <span class="badge bg-light text-primary border p-2">
+            <i class="bi bi-folder2-open me-1"></i>
+            @(Model?.Count ?? 0) Documents
+        </span>
+    </div>
 
     @if (TempData["SuccessMessage"] != null)
     {
@@ -22,65 +32,61 @@
         </div>
     }
 
-    <!-- File Upload Section -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-header">
+    <!-- Upload Document -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-white py-3">
             <h5 class="mb-0">Upload a Document</h5>
         </div>
 
         <div class="card-body">
-
             <form asp-controller="Documents"
                   asp-action="Upload"
                   method="post"
                   enctype="multipart/form-data">
 
-                <div class="d-flex align-items-center gap-2">
+                <div class="row g-2 align-items-center">
+                    <div class="col">
+                        <input type="file"
+                               name="file"
+                               class="form-control"
+                               accept=".pdf,.jpg,.jpeg"
+                               required />
+                    </div>
 
-                    <input type="file"
-                           name="file"
-                           class="form-control"
-                           accept=".pdf,.jpg,.jpeg"
-                           required />
-
-                    <button type="submit"
-                            class="btn btn-primary upload-btn">
-                        <i class="bi bi-cloud-upload"></i>
-                        Upload File
-                    </button>
-
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-cloud-upload me-1"></i>
+                            Upload
+                        </button>
+                    </div>
                 </div>
 
-                <small class="text-muted">
+                <small class="text-muted d-block mt-2">
                     Allowed formats: PDF, JPG, JPEG. Maximum size: 5 MB.
                 </small>
-
             </form>
         </div>
     </div>
 
-    <!-- Uploaded Documents Section -->
-    <div class="card shadow-sm">
-
-        <div class="card-header">
+    <!-- Uploaded Documents -->
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-white py-3">
             <h5 class="mb-0">Uploaded Documents</h5>
         </div>
 
-        <div class="card-body">
+        <div class="card-body p-0">
 
             @if (Model != null && Model.Any())
             {
                 <div class="table-responsive">
-
-                    <table class="table table-bordered table-hover">
-
+                    <table class="table table-hover align-middle mb-0 document-table">
                         <thead class="table-light">
                             <tr>
                                 <th>File Name</th>
                                 <th>File Type</th>
                                 <th>File Size</th>
                                 <th>Uploaded At</th>
-                                <th>Action</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
 
@@ -90,48 +96,48 @@
                                 <tr>
                                     <td>@document.OriginalFileName</td>
 
-                                    <td>@document.ContentType</td>
-
                                     <td>
-                                        @((document.FileSize / 1024.0).ToString("F2")) KB
+                                        @System.IO.Path.GetExtension(document.OriginalFileName).TrimStart('.').ToUpperInvariant()
                                     </td>
 
                                     <td>
-                                        @document.UploadedAt.ToLocalTime().ToString("dd-MM-yyyy hh:mm tt")
+                                        @((document.FileSize / 1024.0).ToString("N2")) KB
                                     </td>
 
                                     <td>
-                                        <a asp-controller="Documents"
-                                           asp-action="Download"
-                                           asp-route-id="@document.Id"
-                                           class="document-action download-icon"
-                                           title="Download document"
-                                           aria-label="Download @document.OriginalFileName">
-
-                                            <i class="bi bi-download"></i>
-                                        </a>
-
-                                        <a asp-controller="Documents"
-                                            asp-action="Delete"
-                                            asp-route-id="@document.Id"
-                                            class="document-action delete-icon"
-                                            title="Delete document"
-                                            aria-label="Delete @document.OriginalFileName">
-                                            <i class="bi bi-trash"></i>
-                                        </a>
+                                        @(document.UploadedAt.ToLocalTime().ToString("dd MMM yyyy, hh:mm tt"))
                                     </td>
-                                        
+
+                                    <td>
+                                        <div class="action-buttons">
+
+                                            <a asp-controller="Documents"
+                                               asp-action="Download"
+                                               asp-route-id="@document.Id"
+                                               class="action-btn action-view"
+                                               title="Download">
+                                                <i class="bi bi-download"></i>
+                                            </a>
+
+                                            <a asp-controller="Documents"
+                                               asp-action="Delete"
+                                               asp-route-id="@document.Id"
+                                               class="action-btn action-delete"
+                                               title="Delete">
+                                                <i class="bi bi-trash"></i>
+                                            </a>
+
+                                        </div>
+                                    </td>
                                 </tr>
                             }
                         </tbody>
-
                     </table>
-
                 </div>
             }
             else
             {
-                <p class="text-muted text-center mb-0">
+                <p class="text-muted text-center py-4 mb-0">
                     No documents uploaded yet.
                 </p>
             }

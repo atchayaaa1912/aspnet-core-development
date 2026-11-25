@@ -1,0 +1,130 @@
+﻿@model Web1.ViewModels.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container-fluid px-4 pt-2 pb-4">
+
+    <div class="mb-4">
+        <h2>Welcome, @User.Identity?.Name!</h2>
+
+        <p class="text-muted">
+            Here's an overview of your workspace and recent activities.
+        </p>
+    </div>
+
+    <!-- Statistics -->
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 p-3">
+                <h6 class="text-muted">Total Enquiries</h6>
+                <h2>@Model.TotalEnquiries</h2>
+                <a asp-controller="Admin"
+                   asp-action="Messages">
+                    View Enquiries
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 p-3">
+                <h6 class="text-muted">Total Documents</h6>
+                <h2>@Model.TotalDocuments</h2>
+                <a asp-controller="Documents"
+                   asp-action="Index">
+                    View Documents
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Recent Enquiries -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-white">
+            <h5 class="mb-0">Recent Enquiries</h5>
+        </div>
+
+        <div class="card-body table-responsive">
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Submitted At</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var enquiry in Model.RecentEnquiries)
+                    {
+                        <tr>
+                            <td>@enquiry.FullName</td>
+                            <td>@enquiry.Email</td>
+                            <td>@enquiry.Subject</td>
+                            <td>@enquiry.SubmittedAt.ToLocalTime().ToString("dd MMM yyyy")</td>
+                        </tr>
+                    }
+
+                    @if (!Model.RecentEnquiries.Any())
+                    {
+                        <tr>
+                            <td colspan="4" class="text-center text-muted">
+                                No enquiries available.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <!-- Recent Documents -->
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-white">
+            <h5 class="mb-0">Recently Uploaded Documents</h5>
+        </div>
+
+        <div class="card-body table-responsive">
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>File Type</th>
+                        <th>File Size</th>
+                        <th>Uploaded At</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var document in Model.RecentDocuments)
+                    {
+                        <tr>
+                            <td>@document.OriginalFileName</td>
+                            <td>@document.ContentType</td>
+                            <td>@((document.FileSize / 1024.0).ToString("N2")) KB</td>
+                            <td>@document.UploadedAt.ToLocalTime().ToString("dd MMM yyyy")</td>
+                        </tr>
+                    }
+
+                    @if (!Model.RecentDocuments.Any())
+                    {
+                        <tr>
+                            <td colspan="4" class="text-center text-muted">
+                                No documents uploaded yet.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>

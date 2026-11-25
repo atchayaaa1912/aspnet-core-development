@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using Web1.Data;
 using Web1.Models;
 using ClosedXML.Excel;
@@ -7,6 +8,7 @@ using System.IO;
 
 namespace Web1.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _context;

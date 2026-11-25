@@ -24,6 +24,12 @@ namespace Web1.Data
             modelBuilder.Entity<Document>()
                 .HasIndex(d => d.ContentHash)
                 .IsUnique();
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.UserName)
+                .IsUnique();
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
         }
     }
 }

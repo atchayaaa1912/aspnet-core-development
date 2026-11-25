@@ -1,23 +1,13 @@
 
-/* ==============================
-   GENERAL STYLING
-============================== */
-
-html {
-    font-size: 16px;
-    min-height: 100%;
-    position: relative;
-}
-
+/* =====================================
+   GENERAL STYLES
+===================================== */
 
 body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #f4f7fb;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 15px;
     color: #334155;
+    margin: 0;
 }
 
 .page-content {
@@ -25,391 +15,645 @@ body {
     width: 100%;
 }
 
-main {
-    flex: 1;
-    padding-top: 65px;
-    padding-bottom: 65px;
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.footer {
-    flex-shrink: 0;
-    background-color: #101a32;
-    color: white !important;
+/* =====================================
+   CONNECTDESK EMPLOYEE LAYOUT
+===================================== */
+
+.employee-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 100vh;
     width: 100%;
-    padding: 20px 0;
-    margin-top: 30px;
-    position: static;
+    background: #f4f6fa;
 }
 
+/* Sidebar */
 
-/* ==============================
-   NAVIGATION BAR
-============================== */
-
-.navbar {
-    background: linear-gradient(120deg, #0f172a, #1e3a8a) !important;
-    padding: 16px 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-    margin-bottom: 0 !important;
+.sidebar {
+    flex: 0 0 250px;
+    width: 250px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #172b4d;
+    padding: 25px 16px;
+    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.08);
 }
 
-.navbar-brand {
-    font-size: 25px;
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 5px 10px 35px;
+    color: #ffffff;
+    font-size: 23px;
     font-weight: 700;
-    color: white !important;
+}
+
+    .sidebar-brand i {
+        color: #60a5fa;
+        font-size: 25px;
+    }
+
+.sidebar-section {
+    color: #91a4c0;
+    font-size: 11px;
+    font-weight: 700;
     letter-spacing: 1px;
+    padding: 0 12px 12px;
 }
 
-.navbar-nav {
-    margin-left: auto;
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
 }
 
-.nav-link {
-    color: #dbeafe !important;
-    font-size: 16px;
-    font-weight: 500;
-    margin-left: 18px;
-    padding: 9px 15px !important;
-    border-radius: 7px;
-    transition: all 0.3s ease;
-}
-
-    .nav-link:hover {
-        color: white !important;
-        background-color: rgba(255, 255, 255, 0.15);
-    }
-
-
-/* ==============================
-   MAIN CONTENT
-============================== */
-
-main {
-    flex: 1;
-    padding-top: 65px;
-    padding-bottom: 65px;
-}
-
-
-/* ==============================
-   CONTENT CARD
-============================== */
-
-.content-card {
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 50px;
-    background-color: white;
-    border-radius: 15px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
-    transition: 0.3s ease;
-}
-
-    .content-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.10);
-    }
-
-
-/* ==============================
-   HEADINGS
-============================== */
-
-.page-heading {
-    font-size: 42px;
-    font-weight: 700;
-    color: #172554;
-    margin-bottom: 20px;
-    letter-spacing: -1px;
-}
-
-.lead {
-    font-size: 19px;
-    color: #475569;
-    line-height: 1.7;
-}
-
-p {
-    line-height: 1.8;
-}
-
-
-/* ==============================
-   BUTTONS
-============================== */
-
-.btn-primary {
-    background-color: #1d4ed8;
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 13px 14px;
     border: none;
     border-radius: 8px;
-    padding: 12px 28px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    background: transparent;
+    color: #dbe5f2;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: left;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
-    .btn-primary:hover {
-        background-color: #172554;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(29, 78, 216, 0.25);
-    }
-
-
-/* ==============================
-   FOOTER
-============================== */
-
-.footer {
-    background-color: #101a32;
-    color: white;
-    width: 100%;
-    padding: 20px 0;
-    margin-top: 30px;
-    position: static;
-}
-
-
-/* ==============================
-   RESPONSIVE DESIGN
-============================== */
-
-@media (max-width: 768px) {
-
-    .navbar {
-        padding: 12px 15px;
-    }
-
-    .navbar-nav {
-        margin-left: 0;
-    }
-
-    .nav-link {
-        margin-left: 0;
-    }
-
-    main {
-        padding: 35px 15px;
-    }
-
-    .content-card {
-        padding: 30px 20px;
-    }
-
-    .page-heading {
-        font-size: 32px;
-    }
-
-    .lead {
+    .sidebar-link i {
+        width: 20px;
         font-size: 17px;
     }
+
+    .sidebar-link:hover {
+        background: #263f62;
+        color: #ffffff;
+    }
+
+    .sidebar-link.active {
+        background: #2b4b73;
+        color: #ffffff;
+        border-left: 3px solid #60a5fa;
+    }
+
+/* Employee information */
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-
-/* ==============================
-   CONTACT PAGE
-============================== */
-
-/* Contact Us Page */
-
-.contact-container {
-    background: #f5f7fa;
-    padding: 60px 20px;
-    min-height: 600px;
+.employee-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 8px;
+    color: #ffffff;
 }
 
-.contact-header {
-    text-align: center;
-    margin-bottom: 35px;
+    .employee-info i {
+        font-size: 30px;
+        color: #93c5fd;
+    }
+
+    .employee-info strong {
+        display: block;
+        font-size: 14px;
+        color: #ffffff;
+    }
+
+    .employee-info small {
+        display: block;
+        color: #aebed3;
+        font-size: 12px;
+    }
+
+/* Logout */
+
+.logout-link,
+button.sidebar-link {
+    cursor: pointer;
+    font-family: inherit;
 }
 
-    .contact-header h1 {
-        color: #172d4d;
-        font-size: 36px;
+.logout-link {
+    color: #fca5a5;
+}
+
+    .logout-link:hover {
+        background: rgba(239, 68, 68, 0.15);
+        color: #fecaca;
+    }
+
+/* Main content */
+
+.employee-main {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 100vh;
+    padding: 0 !important;
+    background: #f4f6fa;
+}
+
+.employee-content {
+    width: 100%;
+    padding: 30px 35px;
+}
+
+    .employee-content h2 {
+        color: #172b4d;
+        font-size: 28px;
         font-weight: 700;
     }
 
-    .contact-header p {
-        color: #687386;
-        font-size: 16px;
+    .employee-content p {
+        color: #718096;
     }
 
-.contact-card {
-    max-width: 600px;
-    margin: auto;
-    padding: 35px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+/* =====================================
+   TABLE ACTION BUTTONS
+===================================== */
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
 }
 
-    .contact-card .form-label {
-        color: #172d4d;
-        font-weight: 600;
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* View */
+
+.action-view {
+    color: #2563eb;
+    background: #eff6ff;
+    border-color: #dbeafe;
+}
+
+    .action-view:hover {
+        color: #ffffff;
+        background: #2563eb;
     }
 
-    .contact-card .form-control {
-        padding: 12px;
-        border: 1px solid #d5dbe3;
-        border-radius: 5px;
-        font-size: 15px;
+/* Edit */
+
+.action-edit {
+    color: #d97706;
+    background: #fffbeb;
+    border-color: #fef3c7;
+}
+
+    .action-edit:hover {
+        color: #ffffff;
+        background: #d97706;
     }
 
-        .contact-card .form-control:focus {
-            border-color: #b18a45;
-            box-shadow: 0 0 5px rgba(177,138,69,0.25);
-        }
+/* Delete */
 
-    .contact-card .btn-primary {
-        background: #172d4d;
-        border: none;
-        padding: 13px;
-        font-weight: 600;
-        transition: 0.3s;
+.action-delete {
+    color: #dc2626;
+    background: #fef2f2;
+    border-color: #fee2e2;
+}
+
+    .action-delete:hover {
+        color: #ffffff;
+        background: #dc2626;
     }
 
-        .contact-card .btn-primary:hover {
-            background: #b18a45;
-        }
+.action-btn i {
+    font-size: 14px;
+}
 
-/* ==============================
-   MESSAGE ACTION BUTTONS
-============================== */
+.action-buttons form {
+    display: inline-flex;
+    margin: 0;
+}
+
+.action-buttons button {
+    font-family: inherit;
+    padding: 0;
+    line-height: 1;
+}
+
+/* =====================================
+   CONTACT MESSAGE ACTION LINKS
+===================================== */
 
 .contact-action {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: background-color 0.2s ease;
+    width: 30px;
+    height: 30px;
     margin-right: 4px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.2s ease;
 }
 
 .view-icon {
     color: #2563eb;
-    background-color: #eff6ff;
+    background: #eff6ff;
 }
 
     .view-icon:hover {
-        color: white;
-        background-color: #2563eb;
+        color: #1d4ed8;
+        background: #dbeafe;
     }
 
 .edit-icon {
     color: #d97706;
-    background-color: #fffbeb;
+    background: #fffbeb;
 }
 
     .edit-icon:hover {
-        color: white;
-        background-color: #d97706;
+        color: #b45309;
+        background: #fef3c7;
     }
 
-.contact-action.delete-icon {
+.delete-icon {
     color: #dc2626;
-    background-color: #fef2f2;
+    background: #fef2f2;
 }
 
-    .contact-action.delete-icon:hover {
-        color: white;
-        background-color: #dc2626;
+    .delete-icon:hover {
+        color: #b91c1c;
+        background: #fee2e2;
     }
 
-.contact-action i {
-    font-size: 18px;
+/* =====================================
+   DOCUMENT MANAGEMENT
+===================================== */
+
+.document-page {
+    width: 100%;
 }
 
-/* ==============================
-   DOCUMENT ACTIONS
-============================== */
+    .document-page h2 {
+        color: #172b4d;
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .document-page .card {
+        border: 1px solid #e8edf4 !important;
+        border-radius: 8px !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+    }
+
+    .document-page .card-header {
+        background: #ffffff;
+        border-bottom: 1px solid #edf0f5;
+        padding: 15px 18px;
+    }
+
+        .document-page .card-header h5 {
+            color: #172b4d;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+    .document-page .card-body {
+        padding: 18px;
+    }
+
+/* Document table */
+
+.document-table {
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+    .document-table th {
+        background: #f8fafc;
+        color: #475569;
+        font-weight: 600;
+        white-space: nowrap;
+        padding: 13px;
+    }
+
+    .document-table td {
+        padding: 13px;
+        color: #334155;
+    }
+
+    .document-table tbody tr:hover {
+        background: #f8fafc;
+    }
+
+    .document-table .action-buttons {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+    }
+
+/* =====================================
+   DOCUMENT ACTION LINKS
+===================================== */
+
 .document-action {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 6px;
+    width: 30px;
+    height: 30px;
+    margin-right: 4px;
+    border-radius: 5px;
     text-decoration: none;
-    transition: background-color 0.2s ease;
+    transition: background 0.2s ease;
 }
 
 .download-icon {
     color: #2563eb;
-    background-color: #eff6ff;
+    background: #eff6ff;
 }
 
     .download-icon:hover {
-        color: white;
-        background-color: #2563eb;
+        color: #1d4ed8;
+        background: #dbeafe;
     }
 
-    .download-icon i {
-        font-size: 18px;
-    }
-
-
-.delete-icon {
+.document-action.delete-icon {
     color: #dc2626;
-    background-color: #fef2f2;
+    background: #fef2f2;
 }
 
-    .delete-icon:hover {
-        color: white;
-        background-color: #dc2626;
+    .document-action.delete-icon:hover {
+        color: #b91c1c;
+        background: #fee2e2;
     }
 
+/* =====================================
+   PUBLIC NAVBAR
+===================================== */
 
-/* Compact document management page */
-.document-container {
-    margin-top: 10px !important;
+.navbar {
+    background: linear-gradient(100deg, #101f3d, #203d7b) !important;
+    border-bottom: 1px solid #e2e8f0;
 }
 
-    .document-container h2 {
-        margin-bottom: 12px;
+    .navbar .navbar-brand,
+    .navbar .nav-link {
+        color: #ffffff !important;
     }
 
-/* Upload button */
-.upload-btn {
-    white-space: nowrap;
-    min-width: 125px;
+    .navbar .navbar-brand {
+        font-weight: 700;
+    }
+
+    .navbar .nav-link:hover {
+        color: #bfdbfe !important;
+    }
+
+/* =====================================
+   LOGIN & REGISTER PAGES
+===================================== */
+
+body:has(.register-container) {
+    background: #f3f6fb;
 }
 
-/* Compact document table */
-.document-container .table th,
-.document-container .table td {
-    padding: 7px 8px;
-    vertical-align: middle;
-    font-size: 15px;
-}
+/* Form container */
 
-.document-container .card {
-    margin-bottom: 12px !important;
-}
-
-
-/* Registration page layout */
 .register-container {
-    background: #f5f7fa;
-    padding: 25px 20px;
-    min-height: calc(100vh - 68px);
-    box-sizing: border-box;
+    width: 100%;
+    max-width: 600px;
+    margin: 55px auto;
+    padding: 0 15px;
 }
 
-.register-container .contact-header {
-    margin-bottom: 20px;
-}    
+    /* Heading */
 
-.register-container .contact-header h1 {
-    font-size: 30px;
-    margin-bottom: 5px;
+    .register-container .contact-header {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+        .register-container .contact-header h1 {
+            color: #172b4d;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .register-container .contact-header p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+    /* White form card */
+
+    .register-container .contact-card {
+        width: 100%;
+        background: #ffffff;
+        padding: 28px;
+        border: none;
+        border-radius: 9px;
+        box-shadow: 0 5px 20px rgba(15, 23, 42, 0.08);
+    }
+
+        /* Labels */
+
+        .register-container .contact-card .form-label {
+            color: #172b4d;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
+
+        /* Inputs */
+
+        .register-container .contact-card .form-control {
+            height: 42px;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+            .register-container .contact-card .form-control:focus {
+                border-color: #64748b;
+                box-shadow: 0 0 0 3px rgba(23, 43, 77, 0.08);
+            }
+
+        /* Button */
+
+        .register-container .contact-card .btn-primary {
+            width: 100%;
+            height: 42px;
+            background: #172b4d;
+            border: 1px solid #172b4d;
+            color: #ffffff;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+            .register-container .contact-card .btn-primary:hover {
+                background: #243e65;
+                border-color: #243e65;
+            }
+
+/* =====================================
+   CONTACT US PAGE
+===================================== */
+
+.contact-container {
+    width: 100%;
 }
 
-.register-container .contact-card {
-    padding: 25px 35px;
+    .contact-container .contact-header {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+        .contact-container .contact-header h1 {
+            color: #172b4d;
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        .contact-container .contact-header p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+    .contact-container .contact-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 9px;
+        padding: 28px;
+        box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+    }
+
+        .contact-container .contact-card .form-label {
+            color: #172b4d;
+            font-weight: 600;
+        }
+
+        .contact-container .contact-card .form-control {
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+        }
+
+            .contact-container .contact-card .form-control:focus {
+                border-color: #64748b;
+                box-shadow: 0 0 0 3px rgba(23, 43, 77, 0.08);
+            }
+
+        .contact-container .contact-card .btn-primary {
+            background: #172b4d;
+            border-color: #172b4d;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+            .contact-container .contact-card .btn-primary:hover {
+                background: #243e65;
+                border-color: #243e65;
+            }
+
+/* =====================================
+   RESPONSIVE STYLES
+===================================== */
+
+@media (max-width: 768px) {
+
+    /* Employee layout */
+
+    .employee-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+        flex: none;
+        padding: 15px;
+    }
+
+    .sidebar-brand {
+        padding-bottom: 18px;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .sidebar-link {
+        width: auto;
+        flex: 1 1 auto;
+    }
+
+    .sidebar-bottom {
+        margin-top: 15px;
+    }
+
+    .employee-content {
+        padding: 20px 15px;
+    }
+
+    /* Documents */
+
+    .document-page h2 {
+        font-size: 22px;
+    }
+
+    .document-table {
+        min-width: 650px;
+    }
 }
 
-.register-container .mb-3 {
-    margin-bottom: 12px !important;
+@media (max-width: 576px) {
+
+    /* Login and Register */
+
+    .register-container {
+        max-width: 100%;
+        margin: 30px auto;
+    }
+
+        .register-container .contact-card {
+            padding: 22px 18px;
+        }
+
+        .register-container .contact-header h1 {
+            font-size: 24px;
+        }
+
+    /* Contact Us */
+
+    .contact-container .contact-card {
+        padding: 20px 16px;
+    }
 }
